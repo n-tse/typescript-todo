@@ -1,11 +1,19 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { v4 as uuidV4 } from 'uuid';
 
-import confetti from 'canvas-confetti';
+const list = document.querySelector<HTMLUListElement>("#list");
+const form = document.getElementById("#new-task-form") as HTMLFormElement | null;
+const input = document.querySelector<HTMLInputElement>("#new-task-title");
 
-confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+form?.addEventListener("submit", e => {
+  e.preventDefault();
+  // ? is for optional chaining, since value of 'input' could possibly be null if id doesn't exist
+  // basically ensures that 'input' will exist for any following lines
+  if (input?.value == "" || input?.value == null) return;
+
+  const task = {
+    id: uuidV4(),
+    title: input.value,
+    completed: false,
+    createdAt: new Date(),
+  }
+})
