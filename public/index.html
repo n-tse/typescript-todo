@@ -12,13 +12,27 @@
       list-style: none;
       padding: 0;
     }
+
+    li {
+      margin: 4px 0;
+      padding: 4px 0;
+    }
+
+    .delete-task-button {
+      margin: 0 4px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <ul id="list"></ul>
+
   <form id="new-task-form">
     <input type="text" id="new-task-title">
     <button type="submit">Add</button>
   </form>
+    <ul id="list"></ul>
 </body>
 </html>
